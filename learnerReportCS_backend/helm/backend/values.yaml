@@ -1,0 +1,26 @@
+replicaCount: 2
+
+image:
+  repository: learner-backend
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: NodePort
+  port: 80
+  targetPort: 5000
+  nodePort: 30081
+
+resources:
+  limits:
+    cpu: "500m"
+    memory: "512Mi"
+  requests:
+    cpu: "250m"
+    memory: "256Mi"
+
+labels:
+  app: backend
+
+ports:
+  containerPort: 5000

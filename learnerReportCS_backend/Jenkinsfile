@@ -1,0 +1,31 @@
+pipeline {
+    agent any
+    environment {
+        DOCKER_IMAGE = "pandamanish/learner-backend:latest"
+    }
+    stages {
+        stage('Clone Repository') {
+            steps {
+                git branch: 'main', url: 'https://github.com/UnpredictablePrashant/learnerReportCS_backend.git'
+            }
+        }
+        stage('Build Docker Image') {
+            steps {
+                sh 'docker build -t $DOCKER_IMAGE .'
+            }
+        }
+        stage('Push Docker Image') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+                    sh 'docker login -u $DOCKER_USER -p $DOCKER_PASS'
+                    sh 'docker push $DOCKER_IMAGE'
+                }
+            }
+        }
+        stage('Deploy to Kubernetes') {
+            steps {
+                sh 'helm upgrade --install backend ./helm/backend --set image.repository=pandamanish/learner-backend --set image.tag=latest'
+            }
+        }
+    }
+}
