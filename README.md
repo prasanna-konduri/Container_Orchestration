@@ -112,8 +112,6 @@ eval $(minikube docker-env)
     b.Ensured the correct Docker image name is specified.
    
     c.Maintain proper indentation to avoid deployment errors.
-   ![Description of the image](Images/be_deploy.png)
-   ![Description of the image](Images/fe_dploy.png)
 
 Apply the Deployment Files:
 Apply the frontend deployment:
@@ -232,7 +230,6 @@ Deploy:This stage deploys the updated Docker image to the Kubernetes cluster.
 End:Marks the successful completion of the pipeline.
 
 Cicking Build Now to trigger the pipeline. 
-![Description of the image](Images/Pipeline.PNG)
 
 
 
