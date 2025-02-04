@@ -84,16 +84,14 @@ sudo docker login
 ```
 Tag and push the images:
 Frontend:
-```docker tag learner-frontend:latest pandamanish/learner-frontend:latest
-docker push pandamanish/learner-frontend:latest
+```docker tag learner-frontend:latest your-username/learner-frontend:latest
+docker push your-username/learner-frontend:latest
 ```
-![Description of the image](Images/docker_hub_frontend.png)
 
 Backend:
-```docker tag backend:latest pandamanish/backend:latest
-docker push pandamanish/backend:latest
+```docker tag backend:latest your-username/backend:latest
+docker push your-username/backend:latest
 ```
-![Description of the image](Images/dockerpuh_back.png)
 6. Installed Minikube if you its not isntalled in you system
 Download and install Minikube:
 ```
